@@ -11,5 +11,5 @@ import retrofit2.http.Query;
 public interface DrinksService {
 
     @GET("search.php")
-    Call<List<DrinkDto>> listRepos(@Query("drinkName") String drinkName);
+    Call<List<DrinkDto>> listRepos(@Query("f") String drinkName);
 }

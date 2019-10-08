@@ -10,6 +10,7 @@ import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import pl.amad.drinky.R;
 import pl.amad.drinky.activities.RegisterActivity;
+import pl.amad.drinky.dao.UserDatabase;
 import pl.amad.drinky.data.model.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -51,9 +53,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void onLoginClick(EditText username, EditText password) {
-        //TODO
-        User user = new User(username.getText().toString(), password.getText().toString());
-        if (user.getLogin().isEmpty()) {
+        UserDatabase db = UserDatabase.getInstance(this);
+        User user = db.dao().searchByUsername(username.getText().toString());
+        if (user != null && user.getPassword().equals(password.getText().toString())) {
             startActivity(new Intent(this, ListOfDrinksActivity.class));
             finish();
         } else {

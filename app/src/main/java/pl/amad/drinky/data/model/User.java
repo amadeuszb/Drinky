@@ -1,12 +1,24 @@
 package pl.amad.drinky.data.model;
 
-public class User {
-    Long id;
-    String login;
-    String password;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
 
-    public User() {
-    }
+@Entity(tableName = User.TABLE_NAME, indices = {@Index(value = {"id"}, unique = true)})
+public class User {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+   public  Long id;
+
+    @ColumnInfo(name = "login")
+    public String login;
+
+    @ColumnInfo(name = "password")
+    public String password;
+
+    public static final String TABLE_NAME = "User";
+
 
     public void setLogin(String login) {
         this.login = login;
@@ -24,8 +36,5 @@ public class User {
         return password;
     }
 
-    public User(String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
+
 }
