@@ -10,23 +10,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/back_to_main_menu_icon"
+            android:layout_width="54dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="24dp"
+            android:onClick="backToLoginForm"
+            android:src="?attr/homeAsUpIndicator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/search_drink_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ems="10"
+            android:hint="@string/search_drink"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/drinks_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="640dp"
+            android:scrollbars="vertical" />
     </LinearLayout>
 
-    <android.support.v7.widget.AppCompatAutoCompleteTextView
-        android:id="@+id/search_drink_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:ems="10"
-        android:hint="@string/search_drink"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="#000000"
-        android:textColorHint="#000000" />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/drinks_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp" />
 
 </FrameLayout>

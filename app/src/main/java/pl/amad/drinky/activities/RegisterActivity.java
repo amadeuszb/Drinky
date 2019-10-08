@@ -22,9 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     protected void backToLoginForm(){
-        setContentView(R.layout.activity_register);
-
-       // startActivity(new Intent(this, LoginActivity.class));
+        setContentView(R.layout.activity_login);
         finish();
     }
 }
