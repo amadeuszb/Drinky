@@ -4,17 +4,16 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.service.autofill.UserData;
 
-import pl.amad.drinky.data.model.User;
+import pl.amad.drinky.data.model.Party;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {Party.class}, version = 1, exportSchema = false)
 public abstract class UserDatabase extends RoomDatabase {
     private static UserDatabase db;
 
     public synchronized static UserDatabase getInstance(Context context) {
         if (db == null) {
-            db = Room.databaseBuilder(context, UserDatabase.class, User.TABLE_NAME)
+            db = Room.databaseBuilder(context, UserDatabase.class, Party.TABLE_NAME)
                     .allowMainThreadQueries()
                     .build();
         }

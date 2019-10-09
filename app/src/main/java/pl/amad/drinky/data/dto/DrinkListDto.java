@@ -11,6 +11,15 @@ public class DrinkListDto {
     @Expose
     private LinkedList<DrinkDto> drinks = null;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
     public LinkedList<DrinkDto> getDrinks() {
         return drinks;
     }

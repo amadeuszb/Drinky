@@ -23,11 +23,13 @@ import com.android.volley.toolbox.Volley;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 import pl.amad.drinky.R;
 import pl.amad.drinky.adapters.MyAdapter;
 import pl.amad.drinky.async.GsonRequest;
+import pl.amad.drinky.async.RequestAboutDrinksListTask;
 import pl.amad.drinky.data.dto.DrinkDto;
 import pl.amad.drinky.data.dto.DrinkListDto;
 
@@ -73,35 +75,11 @@ public class ListOfDrinksActivity extends AppCompatActivity {
     }
 
     private MyAdapter newListToView(String text) {
-        theradGetList(text);
+        //theradGetList(text);
+
+        new RequestAboutDrinksListTask(getApplicationContext(), drinksList).execute(text);
 
         return new MyAdapter(drinksList);
-    }
-
-    protected void theradGetList(String letter) {
-        Context applicationContext = getApplicationContext();
-        Thread x = new Thread(new Runnable() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void run() {
-                Map<String, String> headers = new ArrayMap<>();
-                GsonRequest<DrinkListDto> drinkListDtoGsonRequest =
-                        new GsonRequest<>("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + letter,
-                                DrinkListDto.class,
-                                headers,
-                                response -> {
-                                    drinksList.clear();
-                                    if(response.getDrinks() != null)
-                                    drinksList = response.getDrinks();
-                                },
-                                error -> {
-                                    drinksList.clear();
-                                });
-                RequestQueue requestQueue = Volley.newRequestQueue(applicationContext);
-                requestQueue.add(drinkListDtoGsonRequest);
-            }
-        });
-        x.start();
     }
 
     protected void backToLoginForm() {
