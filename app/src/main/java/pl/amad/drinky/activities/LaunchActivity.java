@@ -18,11 +18,12 @@ public class LaunchActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(4000);
+                    Thread.sleep(2000);
                     startApplication();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -34,7 +35,7 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     private void startApplication() {
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, MenuActivity.class));
         finish();
     }
 }

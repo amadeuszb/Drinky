@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    useLibrary  'org.apache.http.legacy'
+    useLibrary 'org.apache.http.legacy'
 
     compileSdkVersion 28
     buildToolsVersion "29.0.1"
@@ -32,7 +32,7 @@ dependencies {
     implementation 'com.squareup.okhttp:okhttp:2.5.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     implementation "android.arch.persistence.room:runtime:1.1.1"
-    annotationProcessor  'android.arch.persistence.room:compiler:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'org.apache.httpcomponents:httpclient-android:4.3.5'

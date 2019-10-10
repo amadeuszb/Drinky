@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="pl.amad.drinky">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -12,11 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".activities.ListOfDrinksActivity"></activity>
-        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.PartyDetails"></activity>
+        <activity android:name=".activities.MenuActivity" />
+        <activity android:name=".activities.ListOfDrinksActivity" />
+        <activity android:name=".activities.CreatePartyActivity" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".activities.ListOfPartiesActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".activities.LaunchActivity">
             <intent-filter>
@@ -35,8 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

@@ -11,9 +11,9 @@ import pl.amad.drinky.data.model.Party;
 
 
 @Dao
-public interface UserDao {
+public interface PartyDao {
     @Query("SELECT * FROM " + Party.TABLE_NAME)
-    List<Party> getAllUsers();
+    List<Party> getAllParties();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Party party);
@@ -21,8 +21,8 @@ public interface UserDao {
     @Query("SELECT * FROM " + Party.TABLE_NAME + " WHERE id = :id")
     Party searchById(long id);
 
-    @Query("SELECT * FROM " + Party.TABLE_NAME + " WHERE name = :login")
-    Party searchByUsername(String login);
+    @Query("SELECT * FROM " + Party.TABLE_NAME + " WHERE name = :name")
+    Party searchByName(String name);
 
     @Query("SELECT COUNT(*) FROM " + Party.TABLE_NAME)
     int getDataCount();

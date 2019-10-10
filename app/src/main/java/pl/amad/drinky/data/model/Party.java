@@ -7,9 +7,13 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = Party.TABLE_NAME, indices = {@Index(value = {"id"}, unique = true)})
 public class Party {
+    public long getId() {
+        return id;
+    }
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    public Long id;
+    public long id;
 
     @ColumnInfo(name = "name")
     public String name;
