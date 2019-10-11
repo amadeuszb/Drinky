@@ -60,8 +60,6 @@ public class ListOfDrinksActivity extends AppCompatActivity {
     }
 
     private ListElementAdapter newListToView(String text) {
-
-
         new RequestAboutDrinksListTask(getApplicationContext(), drinksList).execute(text);
 
         return new ListElementAdapter(drinksList);

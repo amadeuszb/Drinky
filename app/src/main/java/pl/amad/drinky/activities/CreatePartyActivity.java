@@ -40,7 +40,7 @@ public class CreatePartyActivity extends AppCompatActivity {
         Party nextParty = new Party();
         nextParty.setName(nameToAdd);
         nextParty.setDescription(descriptionToAdd);
-        if (db.dao().searchByName(nameToAdd) == null) {
+            if (db.dao().searchByName(nameToAdd) == null) {
             db.dao().insert(nextParty);
         }
 

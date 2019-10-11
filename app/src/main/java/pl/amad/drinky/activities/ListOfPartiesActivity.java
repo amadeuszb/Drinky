@@ -14,35 +14,33 @@ import pl.amad.drinky.R;
 import pl.amad.drinky.adapters.ListElementPartyAdapter;
 import pl.amad.drinky.dao.PartyDatabase;
 import pl.amad.drinky.data.model.Party;
+import pl.amad.drinky.fragments.PartyDescriptionFragment;
+import pl.amad.drinky.fragments.PartyListFragment;
 
-public class ListOfPartiesActivity extends AppCompatActivity {
+public class ListOfPartiesActivity extends AppCompatActivity implements PartyListFragment.PartyListListener, PartyDescriptionFragment.DescriptionListener  {
 
-    private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private Button selectPartyButton;
+
     private Button goToCreatePartyButton;
     private LinkedList<Party> partiesList;
-
+    private PartyDescriptionFragment partyDescriptionFragment;
+    private PartyListFragment partyListFragment;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_parties);
-        recyclerView = findViewById(R.id.name_list);
-        recyclerView.setHasFixedSize(true);
-
-        selectPartyButton = findViewById(R.id.name);
         goToCreatePartyButton = findViewById(R.id.register);
         partiesList = new LinkedList<>();
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        partyDescriptionFragment = new PartyDescriptionFragment();
+        partyListFragment = new PartyListFragment();
 
-
-        recyclerView.setAdapter(new ListElementPartyAdapter(onSelectClick(),recyclerView,this));
-
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_list, partyListFragment)
+                .replace(R.id.fragment_description, partyDescriptionFragment)
+                .commit();
         goToCreatePartyButton.setActivated(true);
-        selectPartyButton.setOnClickListener((action) -> {
-            //onSelectClick(usernameEditText, passwordEditText);
-        });
+
         goToCreatePartyButton.setOnClickListener((action) -> switchToCreatePartyActivity());
 
 
@@ -61,13 +59,29 @@ public class ListOfPartiesActivity extends AppCompatActivity {
     }
 
 
-    protected void backToLoginForm() {
-        setContentView(R.layout.activity_menu);
-        finish();
-    }
 
     public void backToMenuForm(View view) {
         setContentView(R.layout.activity_menu);
         finish();
+    }
+
+    @Override
+    public void onInputPartyDescriptionSent(CharSequence input) {
+        partyDescriptionFragment.updateTextView(input);
+
+        getSupportFragmentManager().beginTransaction()
+                  .replace(R.id.fragment_list, partyListFragment)
+                .replace(R.id.fragment_description, partyDescriptionFragment)
+                .commit();
+    }
+
+    @Override
+    public void onInputPartyListSent(CharSequence input) {
+        partyDescriptionFragment.updateTextView(input);
+
+        getSupportFragmentManager().beginTransaction()
+               .replace(R.id.fragment_list, partyListFragment)
+                .replace(R.id.fragment_description, partyDescriptionFragment)
+                .commit();
     }
 }
