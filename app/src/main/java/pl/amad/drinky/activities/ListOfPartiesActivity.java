@@ -68,20 +68,22 @@ public class ListOfPartiesActivity extends AppCompatActivity implements PartyLis
     @Override
     public void onInputPartyDescriptionSent(CharSequence input) {
         partyDescriptionFragment.updateTextView(input);
-
+        PartyDescriptionFragment partyDescriptionFragment1 =new PartyDescriptionFragment();
+        partyDescriptionFragment1.updateTextView(input);
         getSupportFragmentManager().beginTransaction()
-                  .replace(R.id.fragment_list, partyListFragment)
-                .replace(R.id.fragment_description, partyDescriptionFragment)
+                .replace(R.id.fragment_description,partyDescriptionFragment1)
+                .addToBackStack(null)
                 .commit();
     }
 
     @Override
     public void onInputPartyListSent(CharSequence input) {
         partyDescriptionFragment.updateTextView(input);
-
+       // PartyDescriptionFragment partyDescriptionFragment1 =new PartyDescriptionFragment();
+        //partyDescriptionFragment1.updateTextView(input);
         getSupportFragmentManager().beginTransaction()
-               .replace(R.id.fragment_list, partyListFragment)
-                .replace(R.id.fragment_description, partyDescriptionFragment)
+                .replace(R.id.fragment_description,partyDescriptionFragment)
+                .addToBackStack(null)
                 .commit();
     }
 }

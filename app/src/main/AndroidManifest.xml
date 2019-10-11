@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.PartyDetails"></activity>
         <activity android:name=".activities.MenuActivity" />
         <activity android:name=".activities.ListOfDrinksActivity" />
         <activity android:name=".activities.CreatePartyActivity" />

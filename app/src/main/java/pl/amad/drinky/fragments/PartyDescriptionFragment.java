@@ -49,7 +49,9 @@ public class PartyDescriptionFragment extends Fragment {
         Party party = db.dao().searchByName(nameParty.toString());
 
         descriptionText = party.getDescription();
+        nameText = party.getName();
         description.setText(descriptionText);
+        name.setText(nameText);
     }
 
 
