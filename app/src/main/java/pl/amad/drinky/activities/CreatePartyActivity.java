@@ -44,6 +44,7 @@ public class CreatePartyActivity extends AppCompatActivity {
             db.dao().insert(nextParty);
         }
 
+
     }
 
     public void backToLoginForm(View view) {

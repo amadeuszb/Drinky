@@ -31,4 +31,8 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(new Intent(this, ListOfDrinksActivity.class));
 
     }
+    public void goToSettings(View view) {
+        startActivity(new Intent(this, SettingsActivity.class));
+
+    }
 }

@@ -20,13 +20,13 @@ import pl.amad.drinky.fragments.PartyListFragment;
 public class ListOfPartiesActivity extends AppCompatActivity implements PartyListFragment.PartyListListener, PartyDescriptionFragment.DescriptionListener  {
 
     private RecyclerView.LayoutManager layoutManager;
-
     private Button goToCreatePartyButton;
     private LinkedList<Party> partiesList;
     private PartyDescriptionFragment partyDescriptionFragment;
     private PartyListFragment partyListFragment;
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_parties);
         goToCreatePartyButton = findViewById(R.id.register);
@@ -67,11 +67,9 @@ public class ListOfPartiesActivity extends AppCompatActivity implements PartyLis
 
     @Override
     public void onInputPartyDescriptionSent(CharSequence input) {
-        partyDescriptionFragment.updateTextView(input);
-        PartyDescriptionFragment partyDescriptionFragment1 =new PartyDescriptionFragment();
-        partyDescriptionFragment1.updateTextView(input);
+        partyListFragment.refreshList();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_description,partyDescriptionFragment1)
+                .replace(R.id.fragment_list,partyListFragment)
                 .addToBackStack(null)
                 .commit();
     }

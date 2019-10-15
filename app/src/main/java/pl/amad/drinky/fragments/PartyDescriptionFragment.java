@@ -1,19 +1,15 @@
 package pl.amad.drinky.fragments;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.LinkedList;
 
 import pl.amad.drinky.R;
 import pl.amad.drinky.dao.PartyDatabase;
@@ -24,36 +20,79 @@ public class PartyDescriptionFragment extends Fragment {
 
     TextView name;
     TextView description;
+    Button shareButton;
+    Button deleteButton;
     DescriptionListener listener;
     View view;
     String nameText = "test";
     String descriptionText = "test";
 
-    public interface DescriptionListener {
-        void onInputPartyDescriptionSent(CharSequence input);
-    }
-
     public PartyDescriptionFragment() {
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle savedInstanceState){
-        view = layoutInflater.inflate(R.layout.fragment_party_description,viewGroup,false);
-        name = view.findViewById(R.id.party_name_description);
-        description= view.findViewById(R.id.party_description_description);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle savedInstanceState) {
+        view = layoutInflater.inflate(R.layout.fragment_party_description, viewGroup, false);
+        name = view.findViewById(R.id.party_name_description_text);
+        description = view.findViewById(R.id.party_description_description);
+        name.setText(nameText);
+        description.setText(descriptionText);
+        shareButton = view.findViewById(R.id.button_facebook_share);
+        deleteButton = view.findViewById(R.id.button_delete_party);
+
+        shareButton.setActivated(false);
         return view;
     }
 
-    public void updateTextView(CharSequence nameParty){
+    public View.OnClickListener onButtonShare(String textToShare) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, textToShare);
+        intent.setType("text/plain");
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(Intent.createChooser(intent, getString(R.string.share)));
+            }
+        };
+    }
+    public View.OnClickListener onButtonDelete(String nameOfParty) {
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete();
+                listener.onInputPartyDescriptionSent("");
+            }
+        };
+    }
+    private void delete() {
+        String nameToDelete = name.getText().toString();
+        PartyDatabase db = PartyDatabase.getInstance(getContext());
+        if (db.dao().searchByName(nameToDelete) != null) {
+            db.dao().delete(db.dao().searchByName(nameToDelete));
+        }
+
+    }
+
+    public void updateTextView(CharSequence nameParty) {
         PartyDatabase db = PartyDatabase.getInstance(getContext());
         Party party = db.dao().searchByName(nameParty.toString());
-
+        Log.e(nameParty.toString(), nameParty.toString());
+        shareButton.setActivated(true);
         descriptionText = party.getDescription();
         nameText = party.getName();
+        shareButton.setOnClickListener(onButtonShare(nameText + " " + descriptionText));
+        deleteButton.setOnClickListener(onButtonDelete(party.getName()));
         description.setText(descriptionText);
         name.setText(nameText);
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -66,10 +105,15 @@ public class PartyDescriptionFragment extends Fragment {
         }
     }
 
+
     @Override
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    public interface DescriptionListener {
+        void onInputPartyDescriptionSent(CharSequence input);
     }
 
 }

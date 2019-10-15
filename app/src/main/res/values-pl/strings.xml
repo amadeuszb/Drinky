@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Drinky</string>
+    <string name="action_create">Stwórz</string>
+    <string name="action_select">Wybierz</string>
+    <string name="action_settings" translatable="false">Ustawienia</string>
+    <string name="login_failed">Logowanie nie powiodło się</string>
+    <string name="prompt_description">Opis</string>
+    <string name="prompt_login">Nazwa</string>
+    <string name="prompt_password_repeat">Powtórz hasło</string>
+    <string name="search_drink">Wyszukaj drink</string>
+    <string name="share_party_on_facebook">Udostępnij imbe</string>
+    <string name="welcome">Witaj!</string>
+    <string name="title_activity_login">Zaloguj</string>
+    <string name="delete">Usuń</string>
+    <string name="share">Udostepnij</string>
+</resources>

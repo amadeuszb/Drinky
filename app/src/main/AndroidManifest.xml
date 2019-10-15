@@ -14,8 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activities.SettingsActivity"></activity>
+
+        <receiver
+            android:name=".recievers.InternetReciever"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name=".activities.MenuActivity" />
-        <activity android:name=".activities.ListOfDrinksActivity" />
+        <activity android:name=".activities.ListOfDrinksActivity">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.CreatePartyActivity" />
         <activity
             android:name=".activities.ListOfPartiesActivity"

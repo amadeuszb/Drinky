@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="356dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/prompt_login"
         android:inputType="textEmailAddress"
@@ -20,26 +20,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/registerTextView" />
+
 
     <EditText
         android:id="@+id/description_register_input"
-        android:layout_width="371dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="412dp"
-        android:layout_marginEnd="24dp"
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:hint="@string/prompt_description"
         android:imeActionLabel="@string/action_create"
         android:imeOptions="actionDone"
         android:inputType="textMultiLine"
         android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/register2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/name_of_party_upade" />
 
     <Button
         android:id="@+id/register2"
@@ -47,7 +48,6 @@
         android:layout_height="58dp"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="88dp"
         android:enabled="true"
@@ -56,19 +56,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_register_input"
 
-        app:layout_constraintVertical_bias="1.0" />
+        />
 
     <TextView
         android:id="@+id/registerTextView"
         android:layout_width="142dp"
         android:layout_height="107dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="44dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
         android:text="@string/action_create"
         android:textColor="#6D000000"
         android:textSize="36sp"
@@ -76,9 +71,9 @@
         android:typeface="sans"
         app:fontFamily="sans-serif"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/backIcon" />
 
     <ImageView
         android:id="@+id/backIcon"
@@ -86,13 +81,13 @@
         android:layout_height="48dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:onClick="backToLoginForm"
         android:src="?attr/homeAsUpIndicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
 
 </android.support.constraint.ConstraintLayout>
