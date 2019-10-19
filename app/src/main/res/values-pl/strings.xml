@@ -9,9 +9,10 @@
     <string name="prompt_login">Nazwa</string>
     <string name="prompt_password_repeat">Powtórz hasło</string>
     <string name="search_drink">Wyszukaj drink</string>
-    <string name="share_party_on_facebook">Udostępnij imbe</string>
+    <string name="share_party_on_facebook">Udost. imbe</string>
     <string name="welcome">Witaj!</string>
-    <string name="title_activity_login">Zaloguj</string>
     <string name="delete">Usuń</string>
     <string name="share">Udostepnij</string>
+    <string name="search">Szukaj</string>
+    <string name="title_activity_login">Zaloguj</string>
 </resources>

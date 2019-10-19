@@ -12,7 +12,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="80dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/prompt_login"
         android:inputType="textEmailAddress"
@@ -22,16 +21,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerTextView" />
 
-
     <EditText
         android:id="@+id/description_register_input"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:hint="@string/prompt_description"
         android:imeActionLabel="@string/action_create"
         android:imeOptions="actionDone"
@@ -49,7 +46,7 @@
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="4dp"
         android:enabled="true"
         android:text="@string/action_create"
         android:transformPivotX="@dimen/fab_margin"
@@ -57,13 +54,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/name_of_party_upade"
+        app:layout_constraintVertical_bias="0.944" />
 
     <TextView
         android:id="@+id/registerTextView"
-        android:layout_width="142dp"
-        android:layout_height="107dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
         android:text="@string/action_create"
         android:textColor="#6D000000"
         android:textSize="36sp"
@@ -71,9 +68,9 @@
         android:typeface="sans"
         app:fontFamily="sans-serif"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backIcon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/backIcon"

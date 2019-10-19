@@ -7,13 +7,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-import pl.amad.drinky.activities.ListOfDrinksActivity;
-import pl.amad.drinky.activities.ListOfPartiesActivity;
-
 import static pl.amad.drinky.activities.ListOfDrinksActivity.isConnectedToInternet;
 
 
-public class InternetReciever extends BroadcastReceiver {
+public class InternetConnectionReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
@@ -22,7 +19,7 @@ public class InternetReciever extends BroadcastReceiver {
                 Log.e("net", "Online Connect Intenet ");
             } else {
                 isConnectedToInternet = false;
-                Log.e("net", "Conectivity Failure !!! ");
+                Log.e("net", "Conectivity Failure!!! ");
             }
         } catch (NullPointerException e) {
             e.printStackTrace();

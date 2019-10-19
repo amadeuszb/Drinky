@@ -13,5 +13,6 @@
     <string name="hello_blank_fragment" translatable="false">--</string>
     <string name="share_party_on_facebook">Share Party</string>
     <string name="delete">Delete</string>
-<string name="share">Share</string>
+    <string name="share">Share</string>
+    <string name="search">Search</string>
 </resources>

@@ -24,8 +24,8 @@ public class PartyDescriptionFragment extends Fragment {
     Button deleteButton;
     DescriptionListener listener;
     View view;
-    String nameText = "test";
-    String descriptionText = "test";
+    String nameText = "";
+    String descriptionText = "";
 
     public PartyDescriptionFragment() {
 
@@ -55,21 +55,13 @@ public class PartyDescriptionFragment extends Fragment {
         intent.setAction(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT, textToShare);
         intent.setType("text/plain");
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(Intent.createChooser(intent, getString(R.string.share)));
-            }
-        };
+        return v -> startActivity(Intent.createChooser(intent, getString(R.string.share)));
     }
-    public View.OnClickListener onButtonDelete(String nameOfParty) {
 
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                delete();
-                listener.onInputPartyDescriptionSent("");
-            }
+    public View.OnClickListener onButtonDelete() {
+        return v -> {
+            delete();
+            listener.onInputPartyDescriptionSent("");
         };
     }
     private void delete() {
@@ -78,7 +70,6 @@ public class PartyDescriptionFragment extends Fragment {
         if (db.dao().searchByName(nameToDelete) != null) {
             db.dao().delete(db.dao().searchByName(nameToDelete));
         }
-
     }
 
     public void updateTextView(CharSequence nameParty) {
@@ -89,7 +80,7 @@ public class PartyDescriptionFragment extends Fragment {
         descriptionText = party.getDescription();
         nameText = party.getName();
         shareButton.setOnClickListener(onButtonShare(nameText + " " + descriptionText));
-        deleteButton.setOnClickListener(onButtonDelete(party.getName()));
+        deleteButton.setOnClickListener(onButtonDelete());
         description.setText(descriptionText);
         name.setText(nameText);
     }

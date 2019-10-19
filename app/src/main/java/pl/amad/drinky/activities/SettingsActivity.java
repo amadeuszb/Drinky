@@ -2,17 +2,17 @@ package pl.amad.drinky.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import pl.amad.drinky.R;
-import java.util.Locale;
-
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.Locale;
+
+import pl.amad.drinky.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -31,6 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
                 setLang();
             }
         });
+
     }
 
     public void setLang(){
@@ -60,5 +61,10 @@ public class SettingsActivity extends AppCompatActivity {
         //Intent refresh = new Intent(this, SettingsActivity.class);
        // finish();
        // startActivity(refresh);
+    }
+
+    public void backToMenuForm(View view) {
+        setContentView(R.layout.activity_menu);
+        finish();
     }
 }

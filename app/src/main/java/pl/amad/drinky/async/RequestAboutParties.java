@@ -8,12 +8,12 @@ import java.util.LinkedList;
 import pl.amad.drinky.dao.PartyDatabase;
 import pl.amad.drinky.data.model.Party;
 //TODO
-public class RequestAboutParty extends AsyncTask<String, String, LinkedList<Party>> {
+public class RequestAboutParties extends AsyncTask<String, String, LinkedList<Party>> {
 
     private Context mContext;
-    LinkedList<Party> partyList;
+    private LinkedList<Party> partyList;
 
-    public RequestAboutParty(Context context, LinkedList<Party> partyList) {
+    public RequestAboutParties(Context context, LinkedList<Party> partyList) {
         mContext = context;
         this.partyList = partyList;
     }

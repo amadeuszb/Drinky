@@ -11,7 +11,6 @@ import android.widget.Button;
 import java.util.LinkedList;
 
 import pl.amad.drinky.R;
-import pl.amad.drinky.adapters.ListElementPartyAdapter;
 import pl.amad.drinky.dao.PartyDatabase;
 import pl.amad.drinky.data.model.Party;
 import pl.amad.drinky.fragments.PartyDescriptionFragment;
@@ -24,9 +23,9 @@ public class ListOfPartiesActivity extends AppCompatActivity implements PartyLis
     private LinkedList<Party> partiesList;
     private PartyDescriptionFragment partyDescriptionFragment;
     private PartyListFragment partyListFragment;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_parties);
         goToCreatePartyButton = findViewById(R.id.register);
@@ -34,16 +33,12 @@ public class ListOfPartiesActivity extends AppCompatActivity implements PartyLis
         layoutManager = new LinearLayoutManager(this);
         partyDescriptionFragment = new PartyDescriptionFragment();
         partyListFragment = new PartyListFragment();
-
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_list, partyListFragment)
                 .replace(R.id.fragment_description, partyDescriptionFragment)
                 .commit();
         goToCreatePartyButton.setActivated(true);
-
         goToCreatePartyButton.setOnClickListener((action) -> switchToCreatePartyActivity());
-
-
     }
 
     private void switchToCreatePartyActivity() {
@@ -53,7 +48,6 @@ public class ListOfPartiesActivity extends AppCompatActivity implements PartyLis
     private LinkedList<Party> onSelectClick() {
         PartyDatabase db = PartyDatabase.getInstance(this);
         LinkedList<Party> allParties = new LinkedList<>();
-
         allParties.addAll(db.dao().getAllParties());
         return allParties;
     }
@@ -77,11 +71,15 @@ public class ListOfPartiesActivity extends AppCompatActivity implements PartyLis
     @Override
     public void onInputPartyListSent(CharSequence input) {
         partyDescriptionFragment.updateTextView(input);
-       // PartyDescriptionFragment partyDescriptionFragment1 =new PartyDescriptionFragment();
-        //partyDescriptionFragment1.updateTextView(input);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_description,partyDescriptionFragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    protected void onResume() {
+        partyListFragment.refreshList();
+        super.onResume();
     }
 }
